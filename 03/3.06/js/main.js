@@ -32,9 +32,9 @@ d3.json("data/buildings.json").then(function(data){
 
     var rects = svg.selectAll("rect")
             .data(data)
-        .enter()
+            .enter()
             .append("rect")
-            .attr("y", 0)
+            .attr("y", 20)
             .attr("x", function(d){
                 return x(d.name);
             })
@@ -43,7 +43,7 @@ d3.json("data/buildings.json").then(function(data){
                 return y(d.height);
             })
             .attr("fill", function(d) {
-                return "grey";
+                return "red";
             });
 
 })
