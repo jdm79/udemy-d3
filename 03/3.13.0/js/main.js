@@ -4,10 +4,15 @@
 *    Project 1 - Star Break Coffee
 */
 
-const svg = d3.select("#chart-area")
-    .append("svg")
-        .attr("width", "400")
-        .attr("height", "400")
+const margin = { top: 20, right: 10, bottom: 100, left: 100}
+const width = 600 - margin.left - margin.right, 
+      height = 400 -margin.top - margin.bottom
+
+const g = d3.select("#chart-area").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
 
 
 d3.json("data/revenues.json").then(function(data){
@@ -29,7 +34,7 @@ d3.json("data/revenues.json").then(function(data){
         })])
         .range([0, 400])
 
-    const rects = svg.selectAll("rect")
+    const rects = g.selectAll("rect")
         .data(data)
         .enter()
         .append("rect")
