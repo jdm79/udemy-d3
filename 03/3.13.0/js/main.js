@@ -24,7 +24,7 @@ d3.json("data/revenues.json").then(function(data){
         .domain(data.map(function(d){
             return d.month
         }))
-        .range([0, 400])
+        .range([0, width])
         .paddingInner(0.3)
         .paddingOuter(0.4)
 
@@ -32,7 +32,7 @@ d3.json("data/revenues.json").then(function(data){
         .domain([0, d3.max(data, function(d){
             return d.revenue
         })])
-        .range([0, 400])
+        .range([0, height])
 
     const rects = g.selectAll("rect")
         .data(data)
